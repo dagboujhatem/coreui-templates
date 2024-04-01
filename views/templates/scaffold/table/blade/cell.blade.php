@@ -1,1 +1,1 @@
-<td>{{ $$MODEL_NAME_CAMEL$->$FIELD_NAME$ }}</td>
+<td>@{{ ${!! $modelVariable !!}->{!! $fieldName !!} }}</td>

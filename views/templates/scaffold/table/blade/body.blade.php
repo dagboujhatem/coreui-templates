@@ -1,26 +1,41 @@
 <div class="table-responsive-sm">
-    <table class="table table-striped" id="$MODEL_NAME_PLURAL_CAMEL$-table">
+    <table class="table table-striped" id="{{ $config->modelNames->dashedPlural }}-table">
         <thead>
             <tr>
-                $FIELD_HEADERS$
-                <th colspan="3">Action</th>
+                {!! $fieldHeaders !!}
+                @if($config->options->localized)
+                    <th colspan="3">@lang('crud.action')</th>
+                @else
+                    <th colspan="3">Action</th>
+                @endif
             </tr>
         </thead>
         <tbody>
-        @foreach($$MODEL_NAME_PLURAL_CAMEL$ as $$MODEL_NAME_CAMEL$)
+        @@foreach(${{ $config->modelNames->camelPlural }} as ${{ $config->modelNames->camel }})
             <tr>
-                $FIELD_BODY$
+                {!! $fieldBody !!}
                 <td>
-                    {!! Form::open(['route' => ['$ROUTE_NAMED_PREFIX$$MODEL_NAME_PLURAL_CAMEL$.destroy', $$MODEL_NAME_CAMEL$->$PRIMARY_KEY_NAME$], 'method' => 'delete']) !!}
+                    @{!! Form::open(['route' => ['{{ $config->prefixes->getRoutePrefixWith('.') }}{{ $config->modelNames->camelPlural }}.destroy', ${{ $config->modelNames->camel }}->{{ $config->primaryName }}], 'method' => 'delete']) !!}
                     <div class='btn-group'>
-                        <a href="{{ route('$ROUTE_NAMED_PREFIX$$MODEL_NAME_PLURAL_CAMEL$.show', [$$MODEL_NAME_CAMEL$->$PRIMARY_KEY_NAME$]) }}" class='btn btn-ghost-success'><i class="fa fa-eye"></i></a>
-                        <a href="{{ route('$ROUTE_NAMED_PREFIX$$MODEL_NAME_PLURAL_CAMEL$.edit', [$$MODEL_NAME_CAMEL$->$PRIMARY_KEY_NAME$]) }}" class='btn btn-ghost-info'><i class="fa fa-edit"></i></a>
-                        {!! Form::button('<i class="fa fa-trash"></i>', ['type' => 'submit', 'class' => 'btn btn-ghost-danger', 'onclick' => "return confirm('Are you sure?')"]) !!}
+                        <a href="@{{ route('{!! $config->prefixes->getRoutePrefixWith('.') !!}{!! $config->modelNames->camelPlural !!}.show', [${!! $config->modelNames->camel !!}->{!! $config->primaryName !!}]) }}"
+                           class='btn btn-default btn-xs'>
+                            <i class="far fa-eye"></i>
+                        </a>
+                        <a href="@{{ route('{!! $config->prefixes->getRoutePrefixWith('.') !!}{!! $config->modelNames->camelPlural !!}.edit', [${!! $config->modelNames->camel !!}->{!! $config->primaryName !!}]) }}"
+                           class='btn btn-default btn-xs'>
+                            <i class="far fa-edit"></i>
+                        </a>
+                        @{!! Form::button('<i class="far fa-trash-alt"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm('Are you sure?')"]) !!}
                     </div>
-                    {!! Form::close() !!}
+                    @{!! Form::close() !!}
                 </td>
             </tr>
-        @endforeach
+            @@endforeach
         </tbody>
     </table>
+</div>
+<div class="card-footer clearfix">
+    <div class="float-right">
+        {!! $paginate !!}
+    </div>
 </div>

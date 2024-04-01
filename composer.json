@@ -1,13 +1,13 @@
 {
     "name": "infyomlabs/coreui-templates",
     "type": "library",
-    "description": "CoreUI templates for InfyOm Laravel Generator",
+    "description": "CoreUI views/templates for InfyOm Laravel Generator",
     "keywords": [
         "infyom",
         "laravel",
         "generator",
         "coreui",
-        "templates",
+        "views/templates",
         "bootstrap"
     ],
     "license": "MIT",

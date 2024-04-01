@@ -1,6 +1,6 @@
-@extends('layouts.app')
+@@extends('layouts.app')
 
-@section('content')
+@@section('content')
     <ol class="breadcrumb">
       <li class="breadcrumb-item">
          <a href="@{{ route('{!! $config->prefixes->getRoutePrefixWith('.') !!}{!! $config->modelNames->camelPlural !!}.index') }}">
@@ -21,7 +21,7 @@
     </ol>
      <div class="container-fluid">
           <div class="animated fadeIn">
-                @include('coreui-templates::common.errors')
+                @@include('coreui-templates::common.errors')
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="card">
@@ -47,4 +47,4 @@
                 </div>
            </div>
     </div>
-@endsection
+@@endsection

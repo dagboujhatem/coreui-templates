@@ -26,8 +26,8 @@
              <div class="row">
                  <div class="col-lg-12">
                       <div class="card">
+                          @{!! Form::model(${{ $config->modelNames->camel }}, ['route' => ['{{ $config->prefixes->getRoutePrefixWith('.') }}{{ $config->modelNames->camelPlural }}.update', ${{ $config->modelNames->camel }}->{{ $config->primaryName }}], 'method' => 'patch']) !!}
                           <div class="card-header">
-                              <i class="fa fa-edit fa-lg"></i>
                               <strong>
                                   @if($config->options->localized)
                                       @@lang('crud.edit') @@lang('models/{!! $config->modelNames->camelPlural !!}.singular')
@@ -37,12 +37,19 @@
                               </strong>
                           </div>
                           <div class="card-body">
-                              @{!! Form::model(${{ $config->modelNames->camel }}, ['route' => ['{{ $config->prefixes->getRoutePrefixWith('.') }}{{ $config->modelNames->camelPlural }}.update', ${{ $config->modelNames->camel }}->{{ $config->primaryName }}], 'method' => 'patch']) !!}
-
                               @@include('{{ $config->prefixes->getViewPrefixForInclude() }}{{ $config->modelNames->snakePlural }}.fields')
-
-                              @{!! Form::close() !!}
                           </div>
+                          <div class="card-footer">
+                              <div class="row justify-content-end">
+                                  <button class='btn btn-sm btn-primary' type='submit' value='submit'>
+                                      <i class='fa fa-save'></i> @@lang('crud.edit')
+                                  </button>
+                                  <a href="@{{ route('{!! $config->prefixes->getRoutePrefixWith('.') !!}{!! $config->modelNames->camelPlural !!}.index') }}" class="btn btn-sm btn-secondary ml-1">
+                                      <i class="fa fa-angle-left"></i> @@lang('crud.cancel')
+                                  </a>
+                              </div>
+                          </div>
+                          @{!! Form::close() !!}
                         </div>
                     </div>
                 </div>

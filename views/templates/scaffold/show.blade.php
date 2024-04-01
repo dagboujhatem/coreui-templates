@@ -29,21 +29,25 @@
                              <div class="card-header">
                                  <strong>
                                      @if($config->options->localized)
-                                         @@lang('crud.detail')
+                                         @@lang('models/{!! $config->modelNames->camelPlural !!}.singular') @@lang('crud.detail')
                                      @else
-                                         Details
+                                         {{ $config->modelNames->humanPlural }} Details
                                      @endif
                                  </strong>
-                                  <a href="@{{ route('{!! $config->prefixes->getRoutePrefixWith('.') !!}{!! $config->modelNames->camelPlural  !!}.index') }}" class="btn btn-light">
-                                      @if($config->options->localized)
-                                          @@lang('crud.back')
-                                      @else
-                                          Back
-                                      @endif
-                                  </a>
                              </div>
                              <div class="card-body">
                                  @@include('{{ $config->prefixes->getViewPrefixForInclude() }}{{ $config->modelNames->snakePlural }}.show_fields')
+                             </div>
+                             <div class="card-footer">
+                                 <div class="row justify-content-end">
+                                     <a href="@{{ route('{!! $config->prefixes->getRoutePrefixWith('.') !!}{!! $config->modelNames->camelPlural  !!}.index') }}" class="btn btn-sm btn-secondary ml-1">
+                                         @if($config->options->localized)
+                                             @@lang('crud.back')
+                                         @else
+                                             Back
+                                         @endif
+                                     </a>
+                                 </div>
                              </div>
                          </div>
                      </div>

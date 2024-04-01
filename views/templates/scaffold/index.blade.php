@@ -20,7 +20,6 @@
                  <div class="col-lg-12">
                      <div class="card">
                          <div class="card-header">
-                             <i class="fa fa-align-justify"></i>
                              @if($config->options->localized)
                                  @@lang('models/{{ $config->modelNames->camelPlural }}.plural')
                              @else

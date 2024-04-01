@@ -41,10 +41,10 @@
                           </div>
                           <div class="card-footer">
                               <div class="row justify-content-end">
-                                  <button class='btn btn-sm btn-primary' type='submit' value='submit'>
+                                  <button class='btn btn-primary' type='submit' value='submit'>
                                       <i class='fa fa-save'></i> @@lang('crud.edit')
                                   </button>
-                                  <a href="@{{ route('{!! $config->prefixes->getRoutePrefixWith('.') !!}{!! $config->modelNames->camelPlural !!}.index') }}" class="btn btn-sm btn-secondary ml-1">
+                                  <a href="@{{ route('{!! $config->prefixes->getRoutePrefixWith('.') !!}{!! $config->modelNames->camelPlural !!}.index') }}" class="btn btn-secondary ml-1">
                                       <i class="fa fa-angle-left"></i> @@lang('crud.cancel')
                                   </a>
                               </div>

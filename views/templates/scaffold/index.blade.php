@@ -25,11 +25,21 @@
                              @else
                                  {{ $config->modelNames->humanPlural }}
                              @endif
-                             <a class="pull-right" href="@{{ route('{!! $config->prefixes->getRoutePrefixWith('.') !!}{!! $config->modelNames->camelPlural !!}.create') }}">
-                                 <i class="fa fa-plus-square fa-lg"></i>
-                             </a>
                          </div>
                          <div class="card-body">
+                             <div class="row">
+                                 <div class="col-11 d-flex justify-content-end">
+                                     <a class="btn btn-primary pull-right mb-1" href="@{{ route('{!! $config->prefixes->getRoutePrefixWith('.') !!}{!! $config->modelNames->camelPlural !!}.create') }}">
+                                         <i class="fa fa-plus"></i>
+                                         @if($config->options->localized)
+                                             @@lang('crud.add_new')
+                                             @@lang('models/tests.singular')
+                                         @else
+                                             Add New {{ $config->modelNames->humanPlural }}
+                                         @endif
+                                     </a>
+                                 </div>
+                             </div>
                              {!! $table !!}
                          </div>
                      </div>

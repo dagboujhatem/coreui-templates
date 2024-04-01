@@ -1,15 +1,18 @@
 @@extends('layouts.app')
-
-@@section('content')
-    <ol class="breadcrumb">
+@@section('breadcrumb')
+    <ol class="breadcrumb my-0">
         <li class="breadcrumb-item">
-            @if($config->options->localized)
-                @@lang('models/{{ $config->modelNames->camelPlural }}.plural')
-            @else
-                {{ $config->modelNames->humanPlural }}
-            @endif
+            <a href="@{{ route('{!! $config->prefixes->getRoutePrefixWith('.') !!}{!! $config->modelNames->camelPlural !!}.index') }}">
+                @if($config->options->localized)
+                    @@lang('models/{!! $config->modelNames->camelPlural !!}.singular')
+                @else
+                    {{ $config->modelNames->humanPlural }}
+                @endif
+            </a>
         </li>
     </ol>
+@@endsection
+@@section('content')
     <div class="container-fluid">
         <div class="animated fadeIn">
             @@include('flash::message')

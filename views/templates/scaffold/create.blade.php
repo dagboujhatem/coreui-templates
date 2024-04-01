@@ -1,24 +1,25 @@
 @@extends('layouts.app')
-
-@@section('content')
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item">
-         <a href="@{{ route('{!! $config->prefixes->getRoutePrefixWith('.') !!}{!! $config->modelNames->camelPlural !!}.index') }}">
-             @if($config->options->localized)
-                 @@lang('models/{!! $config->modelNames->camelPlural !!}.singular')
-             @else
-                 {{ $config->modelNames->humanPlural }}
-             @endif
-         </a>
-      </li>
-      <li class="breadcrumb-item active">
-          @if($config->options->localized)
-              @@lang('crud.add_new') @@lang('models/{!! $config->modelNames->camelPlural !!}.singular')
-          @else
-              Add New {{ $config->modelNames->humanPlural }}
-          @endif
-      </li>
+@@section('breadcrumb')
+    <ol class="breadcrumb my-0">
+        <li class="breadcrumb-item">
+            <a href="@{{ route('{!! $config->prefixes->getRoutePrefixWith('.') !!}{!! $config->modelNames->camelPlural !!}.index') }}">
+                @if($config->options->localized)
+                    @@lang('models/{!! $config->modelNames->camelPlural !!}.singular')
+                @else
+                    {{ $config->modelNames->humanPlural }}
+                @endif
+            </a>
+        </li>
+        <li class="breadcrumb-item active">
+            @if($config->options->localized)
+                @@lang('crud.add_new') @@lang('models/{!! $config->modelNames->camelPlural !!}.singular')
+            @else
+                Add New {{ $config->modelNames->humanPlural }}
+            @endif
+        </li>
     </ol>
+@@endsection
+@@section('content')
      <div class="container-fluid">
           <div class="animated fadeIn">
                 @@include('coreui-templates::common.errors')

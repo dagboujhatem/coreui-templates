@@ -33,7 +33,7 @@
                                          <i class="fa fa-plus"></i>
                                          @if($config->options->localized)
                                              @@lang('crud.add_new')
-                                             @@lang('models/tests.singular')
+                                             @@lang('models/{{ $config->modelNames->camelPlural }}.singular')
                                          @else
                                              Add New {{ $config->modelNames->humanPlural }}
                                          @endif
